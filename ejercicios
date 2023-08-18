@@ -1,0 +1,59 @@
+def matrices_iguales(matriz1, matriz2):
+    if len(matriz1) != len(matriz2):
+        return False
+    
+    for i in range(len(matriz1)):
+        for j in range(len(matriz1[0])):
+            if matriz1[i][j] != matriz2[i][j]:
+                return False
+                
+    return True
+
+m1 = [[1,2,3,4],[5,6,7,8],[0,1,0,1]]
+m2 = [[1,2,3,4],[5,6,7,8],[0,1,0,1]]
+m3 = [[1,2],[6,6],[0,1]]
+m4 = [[1,2],[5,6],[0,1]]
+m5 = [[1,2],[5,6],[0,1]]
+m6 = [[1,2],[5,6],[0,1]]
+
+assert matrices_iguales(m1, m2) == True
+assert matrices_iguales(m3, m4) == False
+assert matrices_iguales(m5, m6) == True
+print("Pasaron los casos de prueba")
+
+#ejercicio
+def ultima_ocurrencia(s, c, idx = None):
+    if idx is None:
+        idx = len(s) - 1 
+
+    if idx < 0:  #Caso base luego de recorrer todo el string
+        return -1 
+
+    if s[idx] == c:
+        return idx
+
+    return ultima_ocurrencia(s, c, idx - 1)
+
+# Ejemplos
+s1 = "asdfasdf"
+c1 = "x"
+print(ultima_ocurrencia(s1, c1))  
+
+s2 = "asdfassdf"
+c2 = "s"
+print(ultima_ocurrencia(s2, c2)) 
+
+#ejericico
+def contar_unos_en_posiciones_impares(lista):
+    contador = 0
+    
+    for i in range(1, len(lista), 2):
+        if lista[i] == 1:
+            contador += 1
+    
+    return contador
+
+m = [1, 0, 1, 1, 1]
+m2 = [0, 0, 0, 0, 1, 1, 0, 1]
+print(contar_unos_en_posiciones_impares(m))
+print(contar_unos_en_posiciones_impares(m2))
